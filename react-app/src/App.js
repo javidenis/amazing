@@ -7,10 +7,10 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import SingleQuestion from './components/questions/questions';
+import SingleQuestion from './components/singlequestiondisplay/questions';
 import { authenticate } from './store/session';
-import {getQuestionsThunk} from './store/questions'
-import {getAnswersThunk} from './store/answers'
+import { getQuestionsThunk } from './store/questions'
+import { getAnswersThunk } from './store/answers'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -33,6 +33,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        <ProtectedRoute path='/' exact={true} >
+          <h1>My Home Page</h1>
+        </ProtectedRoute>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -48,9 +51,6 @@ function App() {
         <Route exact path="/questions/:id">
           <SingleQuestion />
         </Route>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
         <ProtectedRoute>
           <h1 id='notfound'>Page Not Found</h1>
         </ProtectedRoute>

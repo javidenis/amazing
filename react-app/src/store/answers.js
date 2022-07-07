@@ -30,7 +30,7 @@ export const deleteAnswerThunk = answerId => async dispatch => {
         }
     )
     if (response.ok) {
-        dispatch(actionDeleteQuestion(answerId))
+        dispatch(actionDeleteAnswer(answerId))
     }
 }
 
