@@ -129,4 +129,4 @@ const answerReducer = (state = {}, action) => {
     }
 }
 
-export default questionReducer
+export default answerReducer

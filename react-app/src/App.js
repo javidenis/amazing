@@ -9,6 +9,8 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import SingleQuestion from './components/questions/questions';
 import { authenticate } from './store/session';
+import {getQuestionsThunk} from './store/questions'
+import {getAnswersThunk} from './store/answers'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -17,6 +19,8 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
+      await dispatch(getQuestionsThunk())
+      await dispatch(getAnswersThunk())
       setLoaded(true);
     })();
   }, [dispatch]);
