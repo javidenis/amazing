@@ -49,7 +49,7 @@ export const editQuestionThunk = question => async dispatch => {
     formData.append('user_id', user_id)
     formData.append('questionId', questionId)
 
-    const response = await fetch('/api/questions',
+    const response = await fetch(`/api/questions/${questionId}`,
         {
             method: "PUT",
             body: formData

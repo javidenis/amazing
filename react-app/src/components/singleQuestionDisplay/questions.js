@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux';
-import { useHistory, useParams, Link } from 'react-router-dom';
+import { useHistory, useParams} from 'react-router-dom';
+
 import SingleAnswer from '../singleAnswerDisplay/singleAnswer';
 
 function SingleQuestion() {
