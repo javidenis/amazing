@@ -7,10 +7,13 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import SingleQuestion from './components/singlequestiondisplay/questions';
+import SingleQuestion from './components/singleQuestionDisplay/questions';
 import { authenticate } from './store/session';
 import { getQuestionsThunk } from './store/questions'
 import { getAnswersThunk } from './store/answers'
+import { getAllUsersThunk } from "./store/users";
+import CreateQuestion from './components/createQuestion/createQuestion';
+import EditQuestion from './components/editQuestion/editQuestion';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -21,6 +24,7 @@ function App() {
       await dispatch(authenticate());
       await dispatch(getQuestionsThunk())
       await dispatch(getAnswersThunk())
+      await dispatch(getAllUsersThunk())
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -48,9 +52,15 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+        <ProtectedRoute path="/questions/new" exact={true}>
+          <CreateQuestion />
+        </ProtectedRoute>
         <Route exact path="/questions/:id">
           <SingleQuestion />
         </Route>
+        <ProtectedRoute exact path="/questions/:id/edit">
+          <EditQuestion />
+        </ProtectedRoute>
         <ProtectedRoute>
           <h1 id='notfound'>Page Not Found</h1>
         </ProtectedRoute>
