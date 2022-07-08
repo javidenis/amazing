@@ -5,11 +5,11 @@ import { useHistory, useParams, Link } from 'react-router-dom';
 function SingleQuestion() {
   const questionId = useParams()?.id
   const thisQuestion = useSelector(state => state?.questions)[questionId]
-  console.log(thisQuestion,'sssssssssssssssssssssssssssssssssssssssssss')
   const sessionUser = useSelector(state => state.session.user)
   const history = useHistory()
   const answers = Object.values(useSelector(state => state.answers))
-  const thisAnswers = answers.filter(answer => Number(answer.question_id) === Number(questionId))
+  const thisAnswer = answers.filter(answer => Number(answer.question_id) === Number(questionId))
+  console.log(thisAnswer,'sssssssssssssssssssssssssssssssssssssssssss')
   return (
     <div>questions</div>
   )
