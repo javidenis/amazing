@@ -22,11 +22,10 @@ function CreateQuestion() {
         }
 
         const data = await dispatch(addQuestionThunk(newQuestion))
-
         if (data) {
             setErrors(data)
         } else {
-            history.push('/')
+            history.push(`/questions/`)
         }
     }
 

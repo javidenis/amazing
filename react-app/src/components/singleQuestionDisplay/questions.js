@@ -20,8 +20,8 @@ function SingleQuestion() {
     <div>
       <div>
         <div>{sessionUser?.id === thisQuestion?.user_id && <button id='single-question-edit-button' onClick={() => handleEditButton()}>Edit Question</button>}</div>
-        <div>{thisQuestion.title}</div>
-        <div>{thisQuestion.content}</div>
+        <div>{thisQuestion?.title}</div>
+        <div>{thisQuestion?.content}</div>
       </div>
       <div>
         {thisAnswers.length < 1 && <p>No Answers yet!</p>}
