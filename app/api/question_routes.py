@@ -36,3 +36,26 @@ def post_question():
         return new_question.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+@question_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def edit_question(id):    
+    form = NewQuestionForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        edit_question = Question.query.get(id)
+
+        edit_question.title=form.data['title']
+        edit_question.content=form.data['content']
+        edit_question.user_id=form.data['user_id']
+
+        db.session.commit()
+        return edit_question.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@question_routes.route('/<int:id>', methods=["DELETE"])
+@login_required
+def delete_question(id):
+    question = Question.query.get(id)
+    db.session.delete(question)
+    db.session.commit()
+    return {'Successful': 'Successful'}
