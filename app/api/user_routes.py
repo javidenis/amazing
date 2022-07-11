@@ -5,6 +5,7 @@ from app.models import User
 user_routes = Blueprint('users', __name__)
 
 
+
 @user_routes.route('/')
 def users():
     users = User.query.all()

@@ -11,10 +11,10 @@ function CreateAnswer({ thisQuestion, setAnswerFormOpen }) {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault()
-
+    const user_id = sessionUser?.id
     const newAnswer = {
       content,
-      user_id: sessionUser.id,
+      user_id,
       question_id
     }
 

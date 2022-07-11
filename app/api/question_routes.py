@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_login import login_required
 from app.models import Question, db
-from app.forms.new_question_form import NewQuestionForm
+from app.forms import NewQuestionForm
 
 question_routes = Blueprint('questions', __name__)
 
@@ -13,6 +13,7 @@ def validation_errors_to_error_messages(validation_errors):
     for field in validation_errors:
         for error in validation_errors[field]:
             errorMessages.append(f'{error}')
+    return errorMessages
    
 
 @question_routes.route('')
