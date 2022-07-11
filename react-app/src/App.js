@@ -14,6 +14,7 @@ import { getAnswersThunk } from './store/answers'
 import { getAllUsersThunk } from "./store/users";
 import CreateQuestion from './components/createQuestion/createQuestion';
 import EditQuestion from './components/editQuestion/editQuestion';
+import Home from './components/home/home';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -38,7 +39,7 @@ function App() {
       <NavBar />
       <Switch>
         <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <Home />
         </ProtectedRoute>
         <Route path='/login' exact={true}>
           <LoginForm />

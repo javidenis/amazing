@@ -27,11 +27,6 @@ const NavBar = () => {
         </NavLink>
       </div>
       <div>
-      <NavLink to='/questions' exact={true} activeClassName='active'>
-          Questions
-        </NavLink>
-      </div>
-      <div>
       <NavLink to='/questions/new' exact={true} activeClassName='active'>
           Create Question
         </NavLink>
