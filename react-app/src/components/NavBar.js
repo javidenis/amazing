@@ -1,39 +1,28 @@
-
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+import './NavBar.css'
 
 const NavBar = () => {
-  return (
-    <nav>
-      <div>
-        <NavLink to='/' exact={true} activeClassName='active'>
-          Home
-        </NavLink>
-      </div>
-      <div>
-        <NavLink to='/login' exact={true} activeClassName='active'>
-          Login
-        </NavLink>
-      </div>
-      <div>
-        <NavLink to='/sign-up' exact={true} activeClassName='active'>
-          Sign Up
-        </NavLink>
-      </div>
-      <div>
-        <NavLink to='/users' exact={true} activeClassName='active'>
-          Users
-        </NavLink>
-      </div>
-      <div>
-      <NavLink to='/questions/new' exact={true} activeClassName='active'>
-          Create Question
-        </NavLink>
-      </div>
-      <LogoutButton />
-    </nav>
-  );
+    return (
+        <nav className='navbar'>
+            <div className='navbar-left'>
+                <div>
+                    <NavLink to='/' exact={true} activeClassName='active'>
+                        <i className="fa-solid fa-house" title="Home"></i>
+                    </NavLink>
+                </div>
+                <div>
+                    <NavLink to='/questions/new' exact={true} activeClassName='active'>
+                    <i className="fa-solid fa-pen-to-square" title="Create Question"></i>
+                    </NavLink>
+                </div>
+            </div>
+            <div className='navbar-right'>
+                <LogoutButton />
+            </div>
+        </nav>
+    );
 }
 
 export default NavBar;

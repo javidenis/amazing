@@ -25,7 +25,7 @@ function CreateQuestion() {
         if (data) {
             setErrors(data)
         } else {
-            history.push(`/`)
+            history.push(`/questions`)
         }
     }
 

@@ -12,6 +12,7 @@ function Home() {
                 {questions.map(question => (
                     <div>
                         <Link to={`/questions/${question.id}`} key={question.id}>{question.title}</Link>
+                        <div>{question.content}</div>
                     </div>
                 ))}
             </div>
