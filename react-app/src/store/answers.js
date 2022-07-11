@@ -24,7 +24,7 @@ const actionDeleteAnswer = answerId => {
 }
 
 export const deleteAnswerThunk = answerId => async dispatch => {
-    const response = await fetch(`/api/answer/${answerId}`,
+    const response = await fetch(`/api/answers/${answerId}`,
         {
             method: "DELETE",
         }
@@ -48,8 +48,8 @@ export const editAnswerThunk = answer => async dispatch => {
     formData.append('user_id', user_id)
     formData.append('question_id', question_id)
     formData.append('answerId', answerId)
-
-    const response = await fetch('/api/answers',
+    
+    const response = await fetch(`/api/answers/${answerId}`,
         {
             method: "PUT",
             body: formData

@@ -13,6 +13,6 @@ def check_content_len(form, field):
         raise ValidationError('Content is required and cannot be more than 500 characters')
 
 class NewAnswerForm(FlaskForm):
-    content = StringField('content', validators=[DataRequired(),check_content_len])
+    content = StringField('content', validators=[DataRequired(), check_content_len])
     question_id = IntegerField('question_id', validators=[DataRequired()])
     user_id = IntegerField('user_id', validators=[DataRequired()])

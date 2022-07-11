@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { editAnswerThunk, deleteAnswerThunk } from '../../store/answers';
+import { addAnswerThunk } from '../../store/answers';
 
-function EditAnswer({ answer, setAnswerFormOpen }) {
-  const questionId = useParams().id
-  const thisQuestion = useSelector(state => state.questions)[questionId]
-  const question_id = thisQuestion.id
+function CreateAnswer({ thisQuestion, setAnswerFormOpen }) {
   const sessionUser = useSelector(state => state.session.user)
+  const question_id = thisQuestion.id
   const [content, setContent] = useState('')
   const [errors, setErrors] = useState([]);
   const dispatch = useDispatch()
@@ -18,12 +15,10 @@ function EditAnswer({ answer, setAnswerFormOpen }) {
     const newAnswer = {
       content,
       user_id: sessionUser.id,
-      question_id,
-      answerId: answer.id
-
+      question_id
     }
 
-    const data = await dispatch(editAnswerThunk(newAnswer))
+    const data = await dispatch(addAnswerThunk(newAnswer))
     if (data) {
       setErrors(data)
     } else {
@@ -35,11 +30,6 @@ function EditAnswer({ answer, setAnswerFormOpen }) {
     setAnswerFormOpen(false)
   }
 
-  const handleDelete = async e => {
-    e.preventDefault()
-    await dispatch(deleteAnswerThunk(answer.id))
-  }
-
   return (
     <form onSubmit={e => handleOnSubmit(e)}>
       {errors.length > 0 &&
@@ -47,15 +37,14 @@ function EditAnswer({ answer, setAnswerFormOpen }) {
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
       }
-      <label>Answer</label>
-      <textarea onChange={e => setContent(e.target.value)} id='cotent-input' type='text' placeholder='Your Answer Here' value={content}></textarea>
+      <label>What would be your answer?</label>
+      <textarea onChange={e => setContent(e.target.value)} id='cotent-input' type='text' placeholder='Enter your answer' value={content}></textarea>
       <div>
         <button>Submit Answer</button>
-        <button onClick={e => handleDelete(e)}>Delete Answer</button>
         <button onClick={e => handleCancel(e)}>Cancel</button>
       </div>
     </form>
   )
 }
 
-export default EditAnswer
+export default CreateAnswer

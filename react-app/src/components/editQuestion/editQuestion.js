@@ -80,7 +80,7 @@ function EditQuestion() {
             </form>
             {deleteDisplay &&
                 <div>
-                    <p>Are you sure you want to delete this Book?</p>
+                    <p>Are you sure you want to delete this Question?</p>
                     <div>
                         <button onClick={() => handleDelete()}>Confirm Delete</button>
                         <button onClick={() => setDeleteDisplay(!deleteDisplay)}>Cancel Delete</button>
