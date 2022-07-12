@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 
 const LoginForm = () => {
@@ -9,6 +9,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -29,6 +30,12 @@ const LoginForm = () => {
   if (user) {
     return <Redirect to='/questions' />;
   }
+
+  const demoHandler = async () => {
+    await dispatch(login("demo@aa.io", "password"));
+    history.push('/questions')
+
+  };
 
   return (
     <form onSubmit={onLogin}>
@@ -57,6 +64,7 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
         <button type='submit'>Login</button>
+        <button className="demo_button" onClick={demoHandler}>Demo User</button>
       </div>
     </form>
   );
