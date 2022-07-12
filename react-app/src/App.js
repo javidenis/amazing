@@ -15,6 +15,7 @@ import { getAllUsersThunk } from "./store/users";
 import CreateQuestion from './components/createQuestion/createQuestion';
 import EditQuestion from './components/editQuestion/editQuestion';
 import Home from './components/home/home';
+import LandingPage from './components/landingPage/landingPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -40,8 +41,7 @@ function App() {
       {sessionUser?.username && <NavBar />}
       <Switch>
         <Route path='/' exact={true}>
-          <SignUpForm />
-          <LoginForm />
+          <LandingPage />
         </Route>
         <ProtectedRoute path='/questions' exact={true} >
           <Home />

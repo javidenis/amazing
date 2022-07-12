@@ -8,6 +8,9 @@ const NavBar = () => {
         <nav className='navbar'>
             <div className='navbar-left'>
                 <div>
+                    <p className='logo'>Query</p>
+                </div>
+                <div>
                     <NavLink to='/' exact={true} activeClassName='active'>
                         <i className="fa-solid fa-house" title="Home"></i>
                     </NavLink>

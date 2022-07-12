@@ -38,35 +38,38 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type='submit'>Login</button>
-        <button className="demo_button" onClick={demoHandler}>Demo User</button>
-      </div>
-    </form>
+    <div className='login-container'>
+      <form className='login-form' onSubmit={onLogin}>
+        <h1 className='logo'>Login</h1>
+        <div>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
+        <div>
+          <input
+            name='email'
+            type='text'
+            placeholder='Email'
+            value={email}
+            onChange={updateEmail}
+          />
+        </div>
+        <div>
+          <input
+            name='password'
+            type='password'
+            placeholder='Password'
+            value={password}
+            onChange={updatePassword}
+          />
+        </div>
+        <div className='submit-and-demo-btn'>
+          <button type='submit'>Login</button>
+          <button id='demo-btn' onClick={demoHandler}>Demo User</button>
+        </div>
+      </form>
+    </div>
   );
 };
 
