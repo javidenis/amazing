@@ -18,7 +18,11 @@ const SignUpForm = () => {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
         setErrors(data)
+      } else {
+        <Redirect to='/questions' />
       }
+    } else {
+      setErrors(['Passwords do not match.']);
     }
   };
 
@@ -48,7 +52,7 @@ const SignUpForm = () => {
         <h1 className='logo'>Sign up</h1>
         <div>
           {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+            <div className='errors' key={ind}>{error}</div>
           ))}
         </div>
         <div>

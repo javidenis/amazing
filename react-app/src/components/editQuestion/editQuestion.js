@@ -50,7 +50,7 @@ function EditQuestion() {
                 {errors.length > 0 &&
                     <ul>
                         <p>Please fix the following errors:</p>
-                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                        {errors.map((error, idx) => <li className='errors' key={idx}>{error}</li>)}
                     </ul>
                 }
                 <label>Question Title:</label>

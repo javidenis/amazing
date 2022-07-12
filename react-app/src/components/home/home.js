@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function Home() {
-    const questions = Object.values(useSelector(state => state.questions))
+    const questions = Object.values(useSelector(state => state.questions)).reverse()
 
     return (
         <div>

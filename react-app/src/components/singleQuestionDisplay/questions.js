@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { Redirect, useHistory, useParams } from 'react-router-dom';
 import CreateAnswer from '../createAnswer/createAnswer';
 
 import SingleAnswer from '../singleAnswerDisplay/singleAnswer';
@@ -13,6 +13,10 @@ function SingleQuestion() {
   const answers = Object.values(useSelector(state => state.answers))
   const thisAnswers = answers.filter(answer => Number(answer.question_id) === Number(questionId))
   const [answerFormOpen, setAnswerFormOpen] = useState(false)
+
+  if (sessionUser === null) {
+      return <Redirect to='/' />
+  }
 
   const handleEditButton = () => {
     history.push(`/questions/${questionId}/edit`)

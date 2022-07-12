@@ -7,3 +7,7 @@ body {
     background-color: rgb(241,242,242);
     font-family: 'Abhaya Libre', serif;
 }
+
+.errors {
+    color: rgb(197, 5, 5);
+}
