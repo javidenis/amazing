@@ -14,10 +14,6 @@ function SingleQuestion() {
   const thisAnswers = answers.filter(answer => Number(answer.question_id) === Number(questionId))
   const [answerFormOpen, setAnswerFormOpen] = useState(false)
 
-  if (sessionUser === null) {
-      return <Redirect to='/' />
-  }
-
   const handleEditButton = () => {
     history.push(`/questions/${questionId}/edit`)
   }
@@ -32,7 +28,6 @@ function SingleQuestion() {
       <h2>Answers</h2>
       <div>
         <div>
-          <p> {sessionUser?.username}, answer the question "{thisQuestion?.title}".</p>
           {sessionUser && <button onClick={() => setAnswerFormOpen(!answerFormOpen)}>Create an Answer</button>}
           {answerFormOpen && sessionUser && <CreateAnswer thisQuestion={thisQuestion} setAnswerFormOpen={setAnswerFormOpen} />}
         </div>

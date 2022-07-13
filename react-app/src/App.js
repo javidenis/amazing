@@ -3,8 +3,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
 import SingleQuestion from './components/singleQuestionDisplay/questions';
 import { authenticate } from './store/session';
 import { getQuestionsThunk } from './store/questions'
@@ -44,18 +42,12 @@ function App() {
         <ProtectedRoute path='/questions' exact={true} >
           <Home />
         </ProtectedRoute>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
         <ProtectedRoute path="/questions/new" exact={true}>
           <CreateQuestion />
         </ProtectedRoute>
-        <Route exact path="/questions/:id">
+        <ProtectedRoute exact path="/questions/:id">
           <SingleQuestion />
-        </Route>
+          </ProtectedRoute>
         <ProtectedRoute exact path="/questions/:id/edit">
           <EditQuestion />
         </ProtectedRoute>

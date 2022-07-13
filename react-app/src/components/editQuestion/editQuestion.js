@@ -1,17 +1,22 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams} from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { deleteQuestionThunk, editQuestionThunk } from '../../store/questions';
 
 function EditQuestion() {
     const sessionUser = useSelector(state => state.session.user)
     const questionId = useParams()?.id
+  const thisQuestion = useSelector(state => state?.questions)[questionId]
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [errors, setErrors] = useState([])
     const history = useHistory()
     const dispatch = useDispatch()
     const [deleteDisplay, setDeleteDisplay] = useState(false)
+
+    if (sessionUser?.id !== thisQuestion?.user_id) {
+        history.push('/questions')
+    }
 
     const handleDelete = async () => {
         await dispatch(deleteQuestionThunk(questionId))
@@ -72,7 +77,7 @@ function EditQuestion() {
                 >
                 </input>
                 <button type="submit">Submit</button>
-                <button onClick={()=> handleCancel()}>Cancel</button>
+                <button onClick={() => handleCancel()}>Cancel</button>
                 <button onClick={(e) => {
                     e.preventDefault()
                     setDeleteDisplay(!deleteDisplay)
