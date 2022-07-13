@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { addQuestionThunk } from '../../store/questions'
+import NavBar from "../NavBar";
+import './createQuestion.css'
 
 function CreateQuestion() {
     const sessionUser = useSelector((state) => state.session.user)
@@ -30,38 +32,46 @@ function CreateQuestion() {
     }
 
     return (
-        <div>
-            <h1>Create a New Question</h1>
-            <form onSubmit={e => handleOnSubmit(e)}>
+        <div className="createQuestion-container">
+            <div className='navbar-divider'></div>
+            <NavBar />
+            <h1 className="createQuestion logo landing-logo">Create a New Question</h1>
+            <form className="createQuestion-form" onSubmit={e => handleOnSubmit(e)}>
                 {errors.length > 0 &&
                     <ul>
                         <p>Please fix the following errors:</p>
                         {errors.map((error, idx) => <li className='errors' key={idx}>{error}</li>)}
                     </ul>
                 }
-                <label>Question Title:</label>
-                <input
-                    name='title'
-                    value={title}
-                    onChange={e => setTitle(e.target.value)}
-                    type='text'
-                    placeholder="Question Title Here"
-                >
-                </input>
-                <label>Question Content:</label>
-                <input
-                    name='content'
-                    value={content}
-                    onChange={e => setContent(e.target.value)}
-                    type='text'
-                    placeholder="Question Content Here"
-                >
-                </input>
-                <button type="submit">Submit</button>
-                <button type="cancel" onClick={(e) => {
-                    e.preventDefault()
-                    history.push('/')
-                }}>Cancel</button>
+                <div className="question-inputs createQuestion-title">
+                    <label>Question Title:</label>
+                    <input
+                        name='title'
+                        value={title}
+                        onChange={e => setTitle(e.target.value)}
+                        type='text'
+                        placeholder="Question Title Here"
+                    >
+                    </input>
+                </div>
+                <div className="question-inputs">
+                    <label>Question Content:</label>
+                    <textarea
+                        name='content'
+                        value={content}
+                        onChange={e => setContent(e.target.value)}
+                        type='text'
+                        placeholder="Question Content Here"
+                    >
+                    </textarea>
+                </div>
+                <div className="question-inputs createQuestion-btns">
+                    <button type="submit">Submit</button>
+                    <button type="cancel" onClick={(e) => {
+                        e.preventDefault()
+                        history.push('/')
+                    }}>Cancel</button>
+                </div>
             </form>
         </div>
     )

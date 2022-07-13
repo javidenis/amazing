@@ -1,0 +1,17 @@
+.home-container {
+    height: 100%;
+    width: 100%;
+}
+
+.all-questions {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    width: 500px;
+    height: 100%;
+}
+
+.all-questions h1{
+    text-align: center;
+}
+

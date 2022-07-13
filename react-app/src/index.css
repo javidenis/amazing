@@ -11,3 +11,8 @@ body {
 .errors {
     color: rgb(197, 5, 5);
 }
+
+.navbar-divider{
+    height: 50px;
+    width: 100%;
+}

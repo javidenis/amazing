@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 import CreateAnswer from '../createAnswer/createAnswer';
+import NavBar from '../NavBar';
 
 import SingleAnswer from '../singleAnswerDisplay/singleAnswer';
 
@@ -20,6 +21,8 @@ function SingleQuestion() {
 
   return (
     <div>
+      <div className='navbar-divider'></div>
+      <NavBar />
       <div>
         <div>{sessionUser?.id === thisQuestion?.user_id && <button onClick={() => handleEditButton()}>Edit Question</button>}</div>
         <h1>{thisQuestion?.title}</h1>
