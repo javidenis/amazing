@@ -7,6 +7,7 @@ import './landingPage.css'
 function LandingPage() {
     return (
         <div className='container-container'>
+            <div className='logo about-title'>A place where you can get all your questions answered.</div>
             <div className='container-contained'>
                 <h1 className='logo landing-logo'>Query</h1>
                 <div className='landing-container'>
