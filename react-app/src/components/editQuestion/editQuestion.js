@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { deleteQuestionThunk, editQuestionThunk } from '../../store/questions';
@@ -9,12 +9,20 @@ function EditQuestion() {
     const sessionUser = useSelector(state => state.session.user)
     const questionId = useParams()?.id
     const thisQuestion = useSelector(state => state?.questions)[questionId]
-    const [title, setTitle] = useState('')
-    const [content, setContent] = useState('')
+    const [title, setTitle] = useState(thisQuestion.title)
+    const [content, setContent] = useState(thisQuestion.content)
     const [errors, setErrors] = useState([])
     const history = useHistory()
     const dispatch = useDispatch()
     const [deleteDisplay, setDeleteDisplay] = useState(false)
+
+    useEffect(() => {
+        if (content.length >= 500) {
+            setErrors(['Content is required and cannot be more than 500 characters'])
+        } else {
+            setErrors([])
+        }
+    }, [content])
 
     if (sessionUser?.id !== thisQuestion?.user_id) {
         history.push('/questions')
@@ -75,17 +83,17 @@ function EditQuestion() {
                 </div>
                 <div className="question-inputs">
                     <label>Question Content:</label>
-                    <input
+                    <textarea
                         name='content'
                         value={content}
                         onChange={e => setContent(e.target.value)}
                         type='text'
                         placeholder="Question Content Here"
                     >
-                    </input>
+                    </textarea>
                 </div>
                 <div className="question-inputs createQuestion-btns">
-                    <button type="submit">Submit</button>
+                    <button disabled={!!errors.length} type="submit">Submit</button>
                     <button onClick={() => handleCancel()}>Cancel</button>
                     <button onClick={(e) => {
                         e.preventDefault()

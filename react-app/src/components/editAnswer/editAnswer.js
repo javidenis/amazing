@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { editAnswerThunk, deleteAnswerThunk } from '../../store/answers';
@@ -8,9 +8,17 @@ function EditAnswer({ answer, setAnswerFormOpen }) {
   const thisQuestion = useSelector(state => state.questions)[questionId]
   const question_id = thisQuestion.id
   const sessionUser = useSelector(state => state.session.user)
-  const [content, setContent] = useState('')
+  const [content, setContent] = useState(answer.content)
   const [errors, setErrors] = useState([]);
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (content.length >= 500) {
+      setErrors(['Content is required and cannot be more than 500 characters'])
+    } else {
+      setErrors([])
+    }
+  }, [content])
 
   const handleOnSubmit = async (e) => {
     e.preventDefault()
@@ -53,7 +61,7 @@ function EditAnswer({ answer, setAnswerFormOpen }) {
           <textarea onChange={e => setContent(e.target.value)} type='text' placeholder='Your Answer Here' value={content}></textarea>
         </div>
         <div className='submitEditAnswer-btns'>
-          <button>Submit Answer</button>
+          <button disabled={!!errors.length}>Submit Answer</button>
           <button onClick={e => handleDelete(e)}>Delete Answer</button>
           <button onClick={e => handleCancel(e)}>Cancel</button>
         </div>

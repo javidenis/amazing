@@ -24,6 +24,10 @@
     padding-right: 20px;
 }
 
+.welcome-user {
+    margin-right: 10px;
+}
+
 .navbar-left a {
     text-decoration: none;
     color: #B92B27;

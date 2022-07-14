@@ -26,7 +26,7 @@ function SingleQuestion() {
       <NavBar />
       <div>
         <div className='title-container'>
-          <h1>{thisQuestion?.title}</h1>
+          <h1 className='title-title-container'>{thisQuestion?.title}</h1>
           <div className='editQuestion-btn'>{sessionUser?.id === thisQuestion?.user_id && <button onClick={() => handleEditButton()}>Edit Question</button>}</div>
         </div>
         <div className='usernameContent-container'>

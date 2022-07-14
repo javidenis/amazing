@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { addQuestionThunk } from '../../store/questions'
@@ -13,6 +13,14 @@ function CreateQuestion() {
     const history = useHistory()
     const dispatch = useDispatch()
 
+    useEffect(() => {
+        if(content.length >= 500){
+            setErrors(['Content is required and cannot be more than 500 characters'])
+        }else{
+            setErrors([])
+        }
+    }, [content])
+
     const handleOnSubmit = async (e) => {
         e.preventDefault()
         const user_id = sessionUser.id
@@ -24,12 +32,16 @@ function CreateQuestion() {
         }
 
         const data = await dispatch(addQuestionThunk(newQuestion))
+
         if (data) {
             setErrors(data)
+            return
         } else {
             history.push(`/questions`)
         }
     }
+
+
 
     return (
         <div className="createQuestion-container">
@@ -66,7 +78,7 @@ function CreateQuestion() {
                     </textarea>
                 </div>
                 <div className="question-inputs createQuestion-btns">
-                    <button type="submit">Submit</button>
+                    <button disabled={!!errors.length} type="submit">Submit</button>
                     <button type="cancel" onClick={(e) => {
                         e.preventDefault()
                         history.push('/')
