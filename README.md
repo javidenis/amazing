@@ -1,6 +1,6 @@
 # Flask React Project
 
-A quora Clone.
+A quora Clone. A place where you can get all your questions answered.
 
 [Live Site Link](https://query11.herokuapp.com/)
 
