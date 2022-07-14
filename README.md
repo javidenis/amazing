@@ -6,7 +6,7 @@ A quora Clone. A place where you can get all your questions answered.
 
 ## Splash Page!
 
-[query-splashpage](https://user-images.githubusercontent.com/59179145/179097869-9ca1b18f-e5b4-473d-b89d-82f841d56e24.png)
+![query-splashpage](https://user-images.githubusercontent.com/59179145/179097869-9ca1b18f-e5b4-473d-b89d-82f841d56e24.png)
 
 ## Home Page
 
