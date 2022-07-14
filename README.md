@@ -1,4 +1,4 @@
-# Quora.
+# Query.
 
 A quora Clone. A place where you can get all your questions answered.
 
