@@ -41,18 +41,22 @@ function EditAnswer({ answer, setAnswerFormOpen }) {
   }
 
   return (
-    <form onSubmit={e => handleOnSubmit(e)}>
-      {errors.length > 0 &&
-        <ul>
-          {errors.map((error, idx) => <li className='errors' key={idx}>{error}</li>)}
-        </ul>
-      }
-      <label>Answer</label>
-      <textarea onChange={e => setContent(e.target.value)} id='cotent-input' type='text' placeholder='Your Answer Here' value={content}></textarea>
-      <div>
-        <button>Submit Answer</button>
-        <button onClick={e => handleDelete(e)}>Delete Answer</button>
-        <button onClick={e => handleCancel(e)}>Cancel</button>
+    <form className='editAnswerForm' onSubmit={e => handleOnSubmit(e)}>
+      <div className='editAnswer-inputs'>
+        <div className='editAnswerTextArea'>
+          {errors.length > 0 &&
+            <ul>
+              {errors.map((error, idx) => <li className='errors' key={idx}>{error}</li>)}
+            </ul>
+          }
+          <label>Answer</label>
+          <textarea onChange={e => setContent(e.target.value)} type='text' placeholder='Your Answer Here' value={content}></textarea>
+        </div>
+        <div className='submitEditAnswer-btns'>
+          <button>Submit Answer</button>
+          <button onClick={e => handleDelete(e)}>Delete Answer</button>
+          <button onClick={e => handleCancel(e)}>Cancel</button>
+        </div>
       </div>
     </form>
   )

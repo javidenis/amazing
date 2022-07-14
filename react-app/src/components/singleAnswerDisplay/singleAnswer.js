@@ -15,9 +15,9 @@ function SingleAnswer({ answerId }) {
   }, [answer, setAnswerContent])
 
   return (
-    <div>
-      <div>
-        <p>{answerUser?.username}</p>
+    <div className='singleAnswerDisplay'>
+      <p>{answerUser?.username}'s answer</p>
+      <div className='answerContent-edit-btn'>
         <div>{answerContent}</div>
         {sessionUser && sessionUser?.id === answer?.user_id && <button onClick={() => setAnswerFormOpen(!answerFormOpen)}>Edit Answer</button>}
         {answerFormOpen && <EditAnswer setAnswerFormOpen={setAnswerFormOpen} answer={answer} />}

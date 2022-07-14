@@ -16,3 +16,9 @@ body {
     height: 50px;
     width: 100%;
 }
+
+#notfound {
+    padding-top: 50px;
+    text-align: center;
+    font-size: 50px;
+}

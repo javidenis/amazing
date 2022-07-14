@@ -31,17 +31,21 @@ function CreateAnswer({ thisQuestion, setAnswerFormOpen }) {
   }
 
   return (
-    <form onSubmit={e => handleOnSubmit(e)}>
-      {errors.length > 0 &&
-        <ul>
-          {errors.map((error, idx) => <li className='errors' key={idx}>{error}</li>)}
-        </ul>
-      }
-      <label>What would be your answer?</label>
-      <textarea onChange={e => setContent(e.target.value)} id='cotent-input' type='text' placeholder='Enter your answer' value={content}></textarea>
-      <div>
-        <button>Submit Answer</button>
-        <button onClick={e => handleCancel(e)}>Cancel</button>
+    <form className='answerForm' onSubmit={e => handleOnSubmit(e)}>
+      <div className='answer-inputs'>
+        <div className='answerTextArea'>
+          {errors.length > 0 &&
+            <ul>
+              {errors.map((error, idx) => <li className='errors' key={idx}>{error}</li>)}
+            </ul>
+          }
+          <label>What would be your answer?</label>
+          <textarea onChange={e => setContent(e.target.value)} type='text' placeholder='Enter your answer' value={content}></textarea>
+        </div>
+        <div className='submitAnswer-btns'>
+          <button>Submit Answer</button>
+          <button onClick={e => handleCancel(e)}>Cancel</button>
+        </div>
       </div>
     </form>
   )

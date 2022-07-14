@@ -3,13 +3,13 @@
     border: 1px solid rgb(151, 149, 149);
     box-shadow: 0px 5px 50px rgba(0, 0, 0, 0.272);
     background-color: rgb(255, 255, 255);
+    border-radius: 4px;
     margin-bottom: 50px;
     margin-top: 20px;
     padding-left: 8px;
     padding-right: 8px;
     height: 300px;
     flex-direction: column;
-    border-radius: 4px;
     font-family: Arial, Helvetica, sans-serif;
     transition: all 0.25s ease-in-out;
 }
@@ -39,7 +39,7 @@
     text-decoration: underline;
 }
 
-.home-question-content{
+.home-question-content {
     height: 100%;
     border-top: 1px solid rgba(0, 0, 0, 0.214);
     padding-top: 5px;

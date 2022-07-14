@@ -1,6 +1,5 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import './home.css'
 import Navbar from '../NavBar'
 import HomeSingleQuestion from '../homeSingleQuestion/HomeSingleQuestion';

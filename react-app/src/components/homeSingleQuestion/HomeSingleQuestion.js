@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import './HomeSingleQuestion.css'
 
 function HomeSingleQuestion({ question }) {
-    const sessionUser = useSelector(state => state.session.user)
     const questionUser = useSelector(state => state.users[question?.user_id])
 
     return (
