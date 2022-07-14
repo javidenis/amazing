@@ -17,8 +17,10 @@ function LandingPage() {
             </div>
             <div className='github-linkedin-links'>
                 <div className='logo'>About the Developer</div>
-                <a href='https://github.com/javidenis/query'><i class="fa-brands fa-github"></i>Github</a>
-                <a href='https://www.linkedin.com/in/jorge-denis-9749b1198/'><i class="fa-brands fa-linkedin"></i>Linked-in</a>
+                <div className='links'>
+                    <a href='https://github.com/javidenis/query'><i class="fa-brands fa-github"></i>Github</a>
+                    <a href='https://www.linkedin.com/in/jorge-denis-9749b1198/'><i class="fa-brands fa-linkedin"></i>Linked-in</a>
+                </div>
             </div>
         </div>
     )
