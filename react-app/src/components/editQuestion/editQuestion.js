@@ -29,8 +29,8 @@ function EditQuestion() {
     }
 
     const handleDelete = async () => {
-        await dispatch(deleteQuestionThunk(questionId))
-        history.push('/')
+        dispatch(deleteQuestionThunk(questionId))
+        history.push('/questions')
     }
 
     const handleOnSubmit = async (e) => {
