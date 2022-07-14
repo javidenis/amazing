@@ -1,6 +1,7 @@
 .container-container {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     height: 100vh;
     width: 100vw;
@@ -89,6 +90,27 @@
     cursor: pointer;
 }
 
-#demo-btn{
+#demo-btn {
     width: 80px;
+}
+
+.github-linkedin-links {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    text-decoration: none;
+    font-size: 15px;
+    align-items: flex-start;
+}
+
+.github-linkedin-links a{
+    text-decoration: none;
+    color: black;
+}
+.github-linkedin-links i{
+    margin-right: 10px;
+}
+
+.github-linkedin-links a:hover{
+    text-decoration: underline;
 }
