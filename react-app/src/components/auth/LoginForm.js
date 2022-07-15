@@ -32,8 +32,11 @@ const LoginForm = () => {
   }
 
   const demoHandler = async () => {
-    await dispatch(login("demo@aa.io", "password"));
-    history.push('/questions')
+    setEmail("demo@aa.io")
+    setPassword('password')
+    await dispatch(login(email, password))
+    // await dispatch(login("demo@aa.io", "password"));
+    // history.push('/questions')
 
   };
 

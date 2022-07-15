@@ -14,12 +14,12 @@ function CreateQuestion() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        if(content.length >= 500){
+        if (content.length >= 500) {
             setErrors(['Content is required and cannot be more than 500 characters'])
-        }else{
+        } else {
             setErrors([])
         }
-    }, [content])
+    }, [content, title])
 
     const handleOnSubmit = async (e) => {
         e.preventDefault()

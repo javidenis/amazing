@@ -22,7 +22,7 @@ function EditQuestion() {
         } else {
             setErrors([])
         }
-    }, [content])
+    }, [content, title])
 
     if (sessionUser?.id !== thisQuestion?.user_id) {
         history.push('/questions')
