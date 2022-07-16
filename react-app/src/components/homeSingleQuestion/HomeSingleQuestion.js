@@ -8,9 +8,9 @@ function HomeSingleQuestion({ question }) {
 
     return (
         <div className='single-question'>
-            <div className='username'>{questionUser.username}'s Question</div>
-            <Link className='home-question-title' to={`/questions/${question.id}`} key={question.id}>{question.title}</Link>
-            <div className='home-question-content'>{question.content}</div>
+            <div className='username'>{questionUser?.username}'s Question</div>
+            <Link className='home-question-title' to={`/questions/${question?.id}`} key={question?.id}>{question?.title}</Link>
+            <div className='home-question-content'>{question?.content}</div>
         </div>
     )
 }
