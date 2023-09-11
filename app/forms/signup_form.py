@@ -2,7 +2,6 @@ from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
-import email_validator
 
 def username_length(form, field):
     username = field.data
